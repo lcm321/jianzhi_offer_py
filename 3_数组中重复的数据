@@ -1,0 +1,40 @@
+#设计程序需考虑输入为空或者输入为非法的情况下
+-- 自己的解法
+a=[2,3,1,0,2,5,3]
+def chongfu(a):
+	length=len(a)
+	if length==0:
+		return False
+	for i in range(0,length-1):
+		for j in range(i,length):
+			if(a[i]==a[j]):
+				return a[i]
+				
+	return False
+
+#以空间换时间，使用一个Hash表进行替换
+def chongfu1(a):
+	length=len(a)
+	if length==0:
+		return False
+	b=[-1]*length
+	for i in range(0,length):
+		if (b[a[i]]!=a[i]):
+			b[a[i]]=a[i]
+		else :
+			return True
+	return False
+	
+	
+#时间效率和空间效率都比较高的
+def chongfu12(a):
+	length=len(a)
+	for i in range(0,length):
+		while(a[i]!=i):
+			if a[a[i]]==a[i]:
+				return true
+			else:
+				m=a[a[i]]
+				a[a[i]]=a[i]
+				a[i]=m
+	return false
